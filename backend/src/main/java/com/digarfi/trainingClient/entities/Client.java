@@ -109,10 +109,4 @@ public class Client implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", cpf=" + cpf + ", income=" + income + ", birthDate=" + birthDate
-				+ ", children=" + children + "]";
-	}
-	
 }
