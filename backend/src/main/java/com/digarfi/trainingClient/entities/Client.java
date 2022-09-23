@@ -25,8 +25,8 @@ public class Client implements Serializable {
 	private String cpf;
 	private Double income;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy",timezone ="GMT")
-	private Instant birthDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "YYYY-MM-DDThh:mm:ssZ",timezone ="GMT")
+	private Instant birth_date;
 	private Integer children;
 
 	
@@ -34,12 +34,12 @@ public class Client implements Serializable {
 	public Client() {
 	}
 
-	public Client(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
+	public Client(Long id, String name, String cpf, Double income, Instant birth_date, Integer children) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.income = income;
-		this.birthDate = birthDate;
+		this.birth_date = birth_date;
 		this.children = children;
 	}
 
@@ -76,12 +76,12 @@ public class Client implements Serializable {
 	}
 
 	
-	public Instant getBirthDate() {
-		return birthDate;
+	public Instant getBirth_date() {
+		return birth_date;
 	}
 
-	public void setBirthDate(Instant birthDate) {
-		this.birthDate = birthDate;
+	public void setBirth_date(Instant birth_date) {
+		this.birth_date = birth_date;
 	}
 
 	public Integer getChildren() {

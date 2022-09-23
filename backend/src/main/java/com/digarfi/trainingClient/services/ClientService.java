@@ -1,12 +1,13 @@
 
 package com.digarfi.trainingClient.services;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,5 +37,21 @@ public class ClientService {
 			Client entity = obj.orElseThrow(() -> new ResourceNotFoundException("Client not found. Check the information and try again"));
 			return new ClientDTO(entity);
 	}
+	
+	
+	@Transactional
+		public ClientDTO insert(ClientDTO dto) {
+			Client entity = new Client();
+			entity.setName(dto.getName());
+			entity.setCpf(dto.getCpf());
+			entity.setIncome(dto.getIncome());
+			entity.setBirth_date(dto.getBirth_date());
+			entity.setChildren(dto.getChildren());
+			entity = repository.save(entity);
+			return new ClientDTO(entity);
+	}
+	
+	
+	
 	
 }
