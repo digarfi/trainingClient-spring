@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.digarfi.trainingClient.dto.ClientDTO;
 import com.digarfi.trainingClient.entities.Client;
 import com.digarfi.trainingClient.repositories.ClientRepository;
+import com.digarfi.trainingClient.services.exceptions.ResourceNotFoundException;
 
 
 @Service
@@ -30,10 +31,10 @@ public class ClientService {
 	}
 
 	@Transactional(readOnly = true)
-	public ClientDTO findById(Long id) {
-		Optional<Client> obj = repository.findById(id);
-		Client entity = obj.get();
-		return new ClientDTO(entity);
+		public ClientDTO findById(Long id) {
+			Optional<Client> obj = repository.findById(id);
+			Client entity = obj.orElseThrow(() -> new ResourceNotFoundException("Client not found. Check the information and try again"));
+			return new ClientDTO(entity);
 	}
 	
 }
